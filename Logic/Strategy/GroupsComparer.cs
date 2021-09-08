@@ -5,22 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 
-namespace Logic.Strategy
+namespace Logic
 {
-    public class GroupsComparer :IComparer
+    public class GroupsComparer : IComparer
     {
-        public bool ShouldPromote(object i_Group)
+
+        public bool isContained(object i_Group)
         {
-            // ReSharper disable once ReplaceWithSingleAssignment.False
-            bool valToReturn = false;
+            bool result = false;
 
             if (SingletonUser.FacebookUser.Groups.Contains(i_Group as Group))
             {
-                valToReturn = true;
+                result = true;
             }
 
-            return valToReturn;
-
+            return result;
         }
     }
 }

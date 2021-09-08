@@ -5,21 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 
-namespace Logic.Strategy
+namespace Logic
 {
-    class PagesComparer : IComparer
+    public class PagesComparer : IComparer
     {
-        public bool ShouldPromote(Object i_Page)
+        public bool isContained(object i_Page)
         {
-            // ReSharper disable once ReplaceWithSingleAssignment.False
-            bool valToReturn = false;
+            bool result = false;
 
             if(SingletonUser.FacebookUser.LikedPages.Contains(i_Page as Page))
             {
-                valToReturn = true;
+                result = true;
             }
 
-            return valToReturn;
+            return result;
         }
     }
 }

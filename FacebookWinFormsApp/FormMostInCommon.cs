@@ -40,8 +40,7 @@ namespace FacebookApp
                 {
                     int result = 0;
 
-                    result += FacebookLogic.AmountOfSimilarLikedPages(friend);
-                    result += FacebookLogic.AmountOfSimilarGroups(friend);
+                    result += FacebookLogic.AmountOfSimilarities(friend);
 
                     FriendsFriendshipLevel.Add(friend, 0);
                     FriendsFriendshipLevel[friend] = result;

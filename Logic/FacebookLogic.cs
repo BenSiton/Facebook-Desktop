@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using Logic.Strategy;
 
 namespace Logic
 {
@@ -76,51 +75,21 @@ namespace Logic
             return listOfString;
         }
 
-        public static int AmountOfSimilarLikedPages(User i_Friend)
+
+
+        public static int AmountOfSimilarities(User i_Friend)
         {
             int result = 0;
-
-            foreach (Page page in i_Friend.LikedPages)
-            {
-                if (SingletonUser.FacebookUser.LikedPages.Contains(page))
-                {
-                    result++;
-                }
-            }
+            Promoter promoter = new Promoter(new PagesComparer());
+            
+            result += promoter.Promote(i_Friend.LikedPages);
+            promoter.Comparer = new GroupsComparer();
+            result += promoter.Promote(i_Friend.Groups);
 
             return result;
         }
 
-        public static int AmountOfSimilarGroups(User i_Friend)
-        {
-            int result = 0;
 
-            foreach (Group group in i_Friend.Groups)
-            {
-                if (SingletonUser.FacebookUser.Groups.Contains(group))
-                {
-                    result++;
-                }
-            }
-
-            return result;
-        }
-
-/*        public static int stamDugma()
-        {
-            int result = 0;
-            GroupsComparer groupsComparer = new GroupsComparer();
-            foreach (Group group in i_Friend.Groups)
-            {
-                if (groupsComparer.ShouldPromote(group))
-                {
-                    result++;
-                }
-            }
-
-            return result;
-        }
-*/
         public static void DeleteUserData(ref AppSettings i_AppSettings)
         {
             i_AppSettings.LastAccessToken = null;

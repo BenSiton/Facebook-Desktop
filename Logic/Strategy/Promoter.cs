@@ -5,31 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 
-namespace Logic.Strategy
+namespace Logic
 {
-
     public class Promoter
     {
         public IComparer Comparer { get; set; }
 
-        public Promoter(IComparer i_Comparer)
+        public Promoter(IComparer i_comparer)
         {
-            Comparer = i_Comparer;
+            Comparer = i_comparer;
         }
 
-        public void Promote()
+        public bool ShouldPromote(object i_Obj)
         {
-/*            int result = 0;
+            bool result = false;
 
-            foreach (Group group in i_Friend.Groups)
+            if (Comparer.isContained(i_Obj))
             {
-                if (SingletonUser.FacebookUser.Groups.Contains(group))
+                result = true;
+            }
+
+            return result;
+        }
+
+        public int Promote(object i_Obj)
+        {
+            int result = 0;
+
+            foreach (object obj in i_Obj as dynamic)
+            {
+                if (ShouldPromote(obj))
                 {
                     result++;
                 }
             }
 
-            return result;*/
+            return result;
         }
     }
 }

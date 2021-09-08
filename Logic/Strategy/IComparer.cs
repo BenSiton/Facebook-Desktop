@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FacebookWrapper.ObjectModel;
 
-namespace Logic.Strategy
+namespace Logic
 {
     public interface IComparer
     {
-        bool ShouldPromote(object i_Obj);
+        bool isContained(object i_Obj);
     }
 }
