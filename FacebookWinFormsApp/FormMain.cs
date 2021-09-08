@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
+using FacebookApp.ControlVisitor;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using Logic;
@@ -22,10 +23,12 @@ namespace FacebookApp
         private Form m_FormFacebookMatch;
         private bool m_ToContinue = true;
         private PanelCustom m_PanelCustom;
+        private readonly EnablerVisitor r_EnablerVisitor;
 
         public FormMain()
         {
             InitializeComponent();
+            r_EnablerVisitor = new EnablerVisitor();
             tempMethodForPanel();
             createNewFormsWithThreads();
             FacebookService.s_CollectionLimit = 200;
@@ -36,6 +39,7 @@ namespace FacebookApp
             m_PanelCustom = PanelFactoryMethod.Create(this);
             m_PanelCustom.Location = panel1.Location;
             Controls.Add(m_PanelCustom);
+            visitPostOptions();
         }
 
         private void createNewFormsWithThreads()
@@ -60,7 +64,7 @@ namespace FacebookApp
             ThreadComponent threadComponentPages = new ThreadComponent(fetchThread(m_FormLikedPages, buttonPages));
             ThreadComponent threadComponentPosts = new ThreadComponent(fetchThread(m_FormPosts, buttonPosts));
             ThreadComponent threadComponentFriends = new ThreadComponent(fetchThread(m_FormFriends, buttonFriends));
-            
+
             r_ThreadComposite.Add(threadComponentAlbums);
             r_ThreadComposite.Add(threadComponentEvents);
             r_ThreadComposite.Add(threadComponentGroups);
@@ -81,12 +85,17 @@ namespace FacebookApp
                         (i_Fetchable as IFetchable)?.Fetch();
                         if (m_ToContinue)
                         {
-                            i_Btn.Invoke(new Action(() => i_Btn.Enabled = true));
+                            i_Btn.Invoke(new Action(() => r_EnablerVisitor.VisitToEnable(i_Btn)));
                         }
                     });
             }
 
             throw new Exception();
+        }
+        private void visitPostOptions()
+        {
+            r_EnablerVisitor.VisitToEnable(textBoxStatus);
+            r_EnablerVisitor.VisitToEnable(buttonSetStatus);
         }
 
         private void buttonSetStatus_Click(object sender, EventArgs e)

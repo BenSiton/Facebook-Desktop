@@ -181,6 +181,7 @@
             // 
             // textBoxStatus
             // 
+            this.textBoxStatus.Enabled = false;
             this.textBoxStatus.Location = new System.Drawing.Point(199, 522);
             this.textBoxStatus.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.textBoxStatus.Name = "textBoxStatus";
@@ -189,6 +190,7 @@
             // 
             // buttonSetStatus
             // 
+            this.buttonSetStatus.Enabled = false;
             this.buttonSetStatus.Location = new System.Drawing.Point(450, 518);
             this.buttonSetStatus.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonSetStatus.Name = "buttonSetStatus";

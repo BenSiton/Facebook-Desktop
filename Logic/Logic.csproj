@@ -45,6 +45,10 @@
     <Compile Include="FacebookLogic.cs" />
     <Compile Include="IFetchable.cs" />
     <Compile Include="SingletonUser.cs" />
+    <Compile Include="Strategy\GroupsComparer.cs" />
+    <Compile Include="Strategy\IComparer.cs" />
+    <Compile Include="Strategy\PagesComparer.cs" />
+    <Compile Include="Strategy\Promoter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Facebook">
