@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1A9A48E0-CEAA-476C-BF83-25FAB3CC3290}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Logic</RootNamespace>
-    <AssemblyName>Logic</AssemblyName>
+    <ProjectGuid>{BE8CFEB1-3BDD-40DA-9979-2CEDE705D3DB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DemoProj</RootNamespace>
+    <AssemblyName>DemoProj</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,38 +32,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Properties\DataSources\GenderProxy.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSettings.cs" />
-    <Compile Include="eGenderProxy.cs" />
-    <Compile Include="FacebookLogic.cs" />
-    <Compile Include="IFetchable.cs" />
-    <Compile Include="Observer\IObserverUserLogin.cs" />
-    <Compile Include="Observer\LoginConcreteObserver.cs" />
-    <Compile Include="Observer\SingletonSubject.cs" />
-    <Compile Include="SingletonUser\SingletonUser.cs" />
-    <Compile Include="Strategy\GroupsComparer.cs" />
-    <Compile Include="Strategy\IComparer.cs" />
-    <Compile Include="Strategy\PagesComparer.cs" />
-    <Compile Include="Strategy\Promoter.cs" />
+    <Compile Include="Program.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Facebook">
-      <HintPath>..\FBApi\Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="FbGraphApiWrapper">
-      <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

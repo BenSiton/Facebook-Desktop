@@ -1,5 +1,6 @@
 ﻿using System;
 using FacebookWrapper.ObjectModel;
+using Logic.Observer;
 
 namespace Logic
 {
@@ -11,12 +12,7 @@ namespace Logic
 
         public static SingletonUser Instance => sr_Instance;
 
-        protected virtual void OnUserLoggedInSuccessfully(EventArgs e)
-        {
-            UserLoggedInSuccessfully?.Invoke(this, null);
-        }
-
-        public static event EventHandler<EventArgs> UserLoggedInSuccessfully;
+        public static SingletonSubject PropSingletonSubject { get;} = new SingletonSubject();
 
         private static readonly SingletonUser sr_Instance = new SingletonUser();
 
@@ -30,7 +26,7 @@ namespace Logic
                 if (s_FacebookUser == null)
                 {
                     s_FacebookUser = value;
-                    Instance.OnUserLoggedInSuccessfully(EventArgs.Empty);
+                    PropSingletonSubject.Notify();
                 }
                 else
                 {

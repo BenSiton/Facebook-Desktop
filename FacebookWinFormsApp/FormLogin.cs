@@ -2,10 +2,11 @@
 using System.Windows.Forms;
 using FacebookWrapper;
 using Logic;
+using Logic.Observer;
 
 namespace FacebookApp
 {
-    public partial class FormLogin : Form
+    public partial class FormLogin : Form, IObserverUserLogin
     {
         private LoginResult m_LoginResult;
         private AppSettings m_AppSettings;
@@ -20,9 +21,13 @@ namespace FacebookApp
         public FormLogin()
         {
             InitializeComponent();
-            SingletonUser.UserLoggedInSuccessfully += user_LoggedIn;
+            SingletonUser.PropSingletonSubject.Attach(this);
         }
+        public void Update(object sender, EventArgs e)
+        {
+            user_LoggedIn(sender, e);
 
+        }
         private void user_LoggedIn(object sender, EventArgs e)
         {
             UserLoggedIn = true;
@@ -122,5 +127,7 @@ namespace FacebookApp
 
             Close();
         }
+
+
     }
 }
