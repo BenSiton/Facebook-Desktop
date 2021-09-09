@@ -10,6 +10,5 @@ namespace Logic.Observer
     public interface IObserverUserLogin
     {
         void Update(object sender, EventArgs e);
-
     }
 }

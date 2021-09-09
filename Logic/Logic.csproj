@@ -45,8 +45,7 @@
     <Compile Include="FacebookLogic.cs" />
     <Compile Include="IFetchable.cs" />
     <Compile Include="Observer\IObserverUserLogin.cs" />
-    <Compile Include="Observer\LoginConcreteObserver.cs" />
-    <Compile Include="Observer\SingletonSubject.cs" />
+    <Compile Include="Observer\UserSubject.cs" />
     <Compile Include="SingletonUser\SingletonUser.cs" />
     <Compile Include="Strategy\GroupsComparer.cs" />
     <Compile Include="Strategy\IComparer.cs" />

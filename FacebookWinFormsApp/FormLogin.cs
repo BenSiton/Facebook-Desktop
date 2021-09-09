@@ -21,13 +21,14 @@ namespace FacebookApp
         public FormLogin()
         {
             InitializeComponent();
-            SingletonUser.PropSingletonSubject.Attach(this);
+            SingletonUser.UserSubject.Attach(this);
         }
+
         public void Update(object sender, EventArgs e)
         {
             user_LoggedIn(sender, e);
-
         }
+
         private void user_LoggedIn(object sender, EventArgs e)
         {
             UserLoggedIn = true;

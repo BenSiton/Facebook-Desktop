@@ -12,7 +12,7 @@ namespace Logic
 
         public static SingletonUser Instance => sr_Instance;
 
-        public static SingletonSubject PropSingletonSubject { get;} = new SingletonSubject();
+        public static UserSubject UserSubject { get;} = new UserSubject();
 
         private static readonly SingletonUser sr_Instance = new SingletonUser();
 
@@ -26,13 +26,18 @@ namespace Logic
                 if (s_FacebookUser == null)
                 {
                     s_FacebookUser = value;
-                    PropSingletonSubject.Notify();
+                    UserSubjectNotify();
                 }
                 else
                 {
                     throw new Exception("There is already an instance!");
                 }
             }
+        }
+
+        public static void UserSubjectNotify()
+        {
+            UserSubject.Notify();
         }
     }
 }

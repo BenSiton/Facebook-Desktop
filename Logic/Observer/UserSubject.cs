@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Observer
 {
-    public class SingletonSubject
+    public class UserSubject
     {
         public static event EventHandler<EventArgs> UserLoggedInSuccessfully;
 
