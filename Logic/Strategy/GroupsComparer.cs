@@ -9,7 +9,6 @@ namespace Logic
 {
     public class GroupsComparer : IComparer
     {
-
         public bool isContained(object i_Group)
         {
             bool result = false;
